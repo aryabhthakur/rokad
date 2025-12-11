@@ -1,103 +1,116 @@
+import Capabilities from "@/components/index/capabilities";
+import Hero from "@/components/index/hero";
+import Industries from "@/components/index/industries";
+import Insights from "@/components/index/insights";
+import PAN from "@/components/index/pan";
+import Platform from "@/components/index/platform";
+import Solutions from "@/components/index/solutions";
+import { getServerApollo } from "@/lib/apollo-server";
+import { gql } from "@apollo/client";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+const QUERY = gql`
+query Home {
+  home {
+    HeroTitle
+    HeroDesc
+    HeroSubTitle
+    industries {
+      name
+      slug
+      subtitle
+    }
+    media_centers {
+      title
+      slug
+      public_on
+      FeaturedImage {
+        url
+      }
+    }
+    case_studies {
+      title
+      slug
+      client
+    }
+    insights {
+      Title
+      slug
+      FeaturedImage {
+        url
+      }
+    }
+    capabilities {
+      name
+      slug
+      subtitle
+    }
+    solutions {
+      name
+      slug
+      features {
+        desc
+        icon
+        title
+      }
+    }
+    partners {
+      name
+      desc
+      logo {
+        url
+      }
+    }
+  }
+}
+        `
+
+export default async function Home() {
+  const client = getServerApollo();
+  const { data } = await client.query({
+    query: QUERY,
+  })
+  // @ts-expect-error type err
+  const homeData = data.home
+
+  const returnDate = (v: string) => new Date(v).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short', // "Nov"
+    day: 'numeric'  // "26"
+  });
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <Hero {...homeData} />
+      <Platform />
+      <Capabilities {...homeData} />
+      <PAN />
+      <Solutions {...homeData} />
+      <Industries {...homeData} />
+      <Insights {...homeData} />
+      <section id="press">
+        <div className="max-w-6xl mx-auto border-x border-dashed border-neutral-300 py-20">
+          <div className="max-w-5xl mx-auto mb-10">
+            <span className="border-2 rounded-full font-medium py-1 px-3">
+              Press Releases
+            </span>
+            <h2 className="text-8xl mt-4 font-semibold"><i className="font-thin">In the</i> News</h2>
+          </div>
+          <div className="divide-y divide-dashed divide-neutral-300 max-w-5xl mx-auto border border-dashed border-neutral-300 bg-white rounded">
+            {homeData.media_centers.map((press: { title: string, public_on: string, slug: string, FeaturedImage: { url: string } }) => <Link key={press.slug} href={"/press/" + press.slug} className={"font-medium hover:text-orange-600 group flex flex-col text-xl p-5 w-full"}>
+              <span className="text-xs uppercase opacity-50 flex items-center">
+                PUBLISHED ON {returnDate(press.public_on)}
+              </span>
+              <h3 className="mt-1">
+                {press.title}
+              </h3>
+            </Link>)}
+          </div>
+          <div className="max-w-5xl mx-auto mt-5 text-neutral-500">
+            To know more, visit <Link href={"/company/media-center"} className="text-black hover:text-orange-600 font-medium">Rokad&apos;s Media Center</Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+    </>
   );
 }

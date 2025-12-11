@@ -1,0 +1,122 @@
+[
+    {
+        "caseStudyId": "cs-001",
+        "title": "Securing Critical Infrastructure with Global Hardware Sourcing",
+        "client": {
+            "name": "Confidential – Series A Indian Cybersecurity Company",
+            "industry": "Cybersecurity / Enterprise Hardware",
+            "description": "A fast-growing Indian innovator building next-generation Layer 3 (L3) network attack prevention hardware for enterprise infrastructure."
+        },
+        "rokadCapabilities": [
+            "BOM Procurement",
+            "Global Supply Chain Sourcing",
+            "Technical Component Sourcing",
+            "Import Compliance & Logistics"
+        ],
+        "challenge": {
+            "summary": "The client had developed a breakthrough L3 attack prevention appliance but faced severe supply chain bottlenecks for critical hardware components, risking product launch and enterprise credibility.",
+            "details": [
+                "Key components (specialized SoCs, secure enclaves, networking ICs) sourced only from limited global suppliers (US, Taiwan, Israel).",
+                "Lead times exceeded 22 weeks, delaying customer pilots and commercial launch.",
+                "No internal procurement team with cross-border sourcing or Indian import compliance expertise.",
+                "High risk of supply disruption threatening SLAs with banking and data center clients."
+            ]
+        },
+        "approach": {
+            "summary": "Rokad deployed an end-to-end BOM procurement and logistics engine, integrating deeply with engineering and operations to de-risk hardware supply.",
+            "steps": [
+                "Conducted technical BOM deconstruction with engineering team to identify 120+ components and mitigate single-source risks.",
+                "Activated Rokad’s global supplier network in Shenzhen, Taipei, and California to secure allocation for scarce SoCs at competitive pricing.",
+                "Managed end-to-end import compliance, customs clearance, and bonded warehousing in India under DGFT/FEMA guidelines.",
+                "Implemented strategic buffer stock (8-week reserve) of critical ICs in Mumbai to ensure production continuity."
+            ],
+            "timeline": "Full solution deployed within 6 weeks of engagement."
+        },
+        "results": {
+            "summary": "Enabled on-time commercial launch, secured enterprise contracts, and strengthened investor confidence through a resilient hardware supply chain.",
+            "metrics": [
+                "Launched first commercial units 3 months ahead of original schedule.",
+                "Secured ₹8.5 Cr pilot contract with a top-5 Indian private bank.",
+                "Reduced average component lead time by 60% (22 → 9 weeks).",
+                "Achieved 99.2% on-time production over 6 months.",
+                "Supply chain de-risking contributed to successful Series B fundraising."
+            ],
+            "testimonial": {
+                "quote": "Rokad didn’t just source parts—they secured our go-to-market timeline. They became our hardware backbone.",
+                "author": "CTO, Client Company"
+            }
+        },
+        "metadata": {
+            "published": true,
+            "featured": true,
+            "tags": [
+                "hardware",
+                "cybersecurity",
+                "BOM",
+                "supply chain",
+                "enterprise",
+                "India"
+            ]
+        }
+    },
+    {
+        "caseStudyId": "cs-002",
+        "title": "Unlocking India’s Mid-Market with Data-Driven Pricing Strategy",
+        "client": {
+            "name": "Confidential – Global Automation SaaS Provider",
+            "industry": "Enterprise SaaS / Workflow Automation",
+            "description": "A US-based B2B SaaS company offering no-code workflow automation, seeking to expand into the Indian market with a locally relevant pricing and packaging model."
+        },
+        "rokadCapabilities": [
+            "GTM Strategy",
+            "Customer Strategy",
+            "Market Intelligence",
+            "Pricing & Packaging Design"
+        ],
+        "challenge": {
+            "summary": "The client’s global pricing—based on per-user, per-month subscriptions—failed to resonate with Indian SMBs and mid-market firms, resulting in low conversion and stalled pipeline.",
+            "details": [
+                "Initial India launch used US pricing (USD-equivalent), perceived as 3–5x too expensive by local buyers.",
+                "No segmentation by company size, industry, or digital maturity—leading to misaligned value perception.",
+                "Competitors (both global and local) offered usage-based, annual, or outcome-linked pricing models.",
+                "Lacked insights into willingness-to-pay (WTP) across Tier 1 vs. Tier 2/3 cities and key verticals (e.g., logistics, manufacturing, edtech)."
+            ]
+        },
+        "approach": {
+            "summary": "Rokad conducted rapid market intelligence and co-designed a tiered, India-optimized pricing architecture aligned with local buying behavior and competitive dynamics.",
+            "steps": [
+                "Executed 40+ interviews with target buyers (ops heads, founders, IT managers) across Mumbai, Bangalore, Pune, and Ahmedabad to map WTP and feature prioritization.",
+                "Analyzed 15+ competitor pricing pages, sales collateral, and channel strategies (including local players like Zycus and global entrants).",
+                "Designed a 3-tier pricing model: (1) Starter (annual, flat-fee for <50 employees), (2) Growth (usage-based + support SLA), (3) Enterprise (custom, outcome-linked).",
+                "Recommended bundling with local payment options (UPI, EMI) and annual billing discounts to improve cash flow alignment.",
+                "Integrated pricing into GTM playbook—training sales on value-based selling for each segment."
+            ],
+            "timeline": "Research to pricing launch completed in 5 weeks."
+        },
+        "results": {
+            "summary": "Dramatically improved conversion, pipeline velocity, and market fit—positioning the client for scalable India growth.",
+            "metrics": [
+                "Increased free-to-paid conversion rate by 2.8x within 3 months of pricing relaunch.",
+                "Reduced sales cycle by 34% due to clearer tiering and value alignment.",
+                "Secured 12 new mid-market clients (₹5–20 LAC ACV) in manufacturing and logistics verticals.",
+                "Achieved 92% customer satisfaction on pricing fairness (post-implementation survey)."
+            ],
+            "testimonial": {
+                "quote": "Rokad didn’t just give us a price sheet—they gave us a market entry strategy rooted in how Indian businesses actually buy software.",
+                "author": "Head of International Growth, Client Company"
+            }
+        },
+        "metadata": {
+            "published": true,
+            "featured": true,
+            "tags": [
+                "SaaS",
+                "pricing strategy",
+                "India GTM",
+                "market intelligence",
+                "B2B",
+                "automation"
+            ]
+        }
+    }
+]
