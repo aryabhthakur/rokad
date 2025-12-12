@@ -43,7 +43,7 @@ const Insights: FunctionComponent<InsightsProps> = ({ className, insights }) => 
                     Featured
                 </div>
                 {insights?.map((insight) => <div key={insight.slug} className="space-y-3 flex gap-4">
-                    <Image width={128} height={320} alt={insight.Title} className="rounded" src={process.env.NEXT_CMS_URL + insight.FeaturedImage.url} />
+                    <Image width={128} height={320} alt={insight.Title} className="rounded" src={insight.FeaturedImage.url} />
                     <Link href={"/insight/" + insight.slug} className="font-medium w-full hover:text-orange-600 group flex text-2xl">
                         <span className="flex-1">
                             {insight.Title}

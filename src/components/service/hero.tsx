@@ -49,7 +49,7 @@ const ServiceHero: FunctionComponent<ServiceHeroProps> = ({ className, name, sub
                 {featuredPartnership && <>
                     <div className="mt-25 max-w-5xl mx-auto">
                         {featuredPartnership.map((partner, i) => <div key={i} className="border rounded-xl p-4 gap-5 ">
-                            <Image width={128} height={128} alt={partner.name} className="rounded flex-1" src={process.env.NEXT_CMS_URL + partner.logo.url} unoptimized />
+                            <Image width={128} height={128} alt={partner.name} className="rounded flex-1" src={partner.logo.url} unoptimized />
                             <Separator orientation="vertical" className="bg-orange-500" />
                             <Link href={partner.news} className="font-medium hover:opacity-75 duration-300 py-2 mt-20 w-full group flex text-2xl items-center">
                                 <span className="flex flex-col">

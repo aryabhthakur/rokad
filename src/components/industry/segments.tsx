@@ -40,7 +40,7 @@ const IndustrySegments: FunctionComponent<IndustrySegmentsProps> = ({ className,
             <div className="max-w-6xl mx-auto mt-20">
                 <Carousel>
                     <CarouselContent>
-                        {segments.map((item, i) => <CarouselItem key={i} className="h-[480px] !pl-0 basis-96 bg-center bg-no-repeat relative rounded overflow-hidden ml-5" style={{ backgroundImage: `url('${process.env.NEXT_CMS_URL + item.img.url}')` }}>
+                        {segments.map((item, i) => <CarouselItem key={i} className="h-[480px] !pl-0 basis-96 bg-center bg-no-repeat relative rounded overflow-hidden ml-5" style={{ backgroundImage: `url('${item.img.url}')` }}>
                             <div className="w-full p-8 text-white flex flex-col h-full bg-black/75">
                                 <p className="text-sm opacity-75">
                                     {item.howWeHelp}

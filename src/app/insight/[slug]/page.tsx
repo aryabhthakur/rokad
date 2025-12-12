@@ -64,7 +64,7 @@ export default async function InsightPage(props: Props): Promise<ReactNode> {
                     {currentInsight.Title}
                 </h2>
                 <div className="p-2 border-y border-neutral-300 border-dashed">
-                    <Image src={process.env.NEXT_CMS_URL + currentInsight.FeaturedImage.url} width={900} height={512} alt={currentInsight.Title} className="rounded" />
+                    <Image src={currentInsight.FeaturedImage.url} width={900} height={512} alt={currentInsight.Title} className="rounded" />
                 </div>
                 <div className="max-w-2xl mx-auto mt-10 border-b pb-10 prose prose-img:rounded-lg prose-img:border-2 prose-img:border-white prose-img:bg-white prose-img:p-5 prose-neutral prose-hr:border-neutral-300 prose-hr:border-dashed">
                     <Markdown>

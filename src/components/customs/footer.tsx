@@ -50,10 +50,12 @@ const Footer: FunctionComponent<FooterProps> = async ({ className, ctaMsg = "Let
     const aboutLinks = [{
         name: "Company",
         slug: "/company"
-    }, {
-        name: "Ecosystem",
-        slug: "/company/ecosystem"
-    }, {
+    },
+    // {
+    // name: "Ecosystem",
+    // slug: "/company/ecosystem"
+    // },
+    {
         name: "Brand Assets",
         slug: "/company/brand-assets"
     }, {
@@ -63,7 +65,7 @@ const Footer: FunctionComponent<FooterProps> = async ({ className, ctaMsg = "Let
         name: "Career",
         slug: "/company/career"
     }]
-    const sections = ["industries", "capabilities", "solutions", "legals", "about", "footerMenus"]
+    const sections = ["industries", "capabilities", "legals", "about", "footerMenus"]
 
     return (<>
         <footer className={cn("px-10 pb-10 w-full", className)}>

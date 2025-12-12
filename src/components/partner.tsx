@@ -35,7 +35,7 @@ const Partner: FunctionComponent<PartnerProps> = ({ className, partners }) => {
                     <div>
                         <InfiniteSlider speed={40} gap={48}>
                             {partners.map(partner => <Link key={partner.press_release.slug} href={"/press/" + partner.press_release.slug} className="h-40 flex grayscale items-center justify-center">
-                                <Image alt={partner.name} width={84} height={96} src={process.env.NEXT_CMS_URL + partner.logo.url} />
+                                <Image alt={partner.name} width={84} height={96} src={partner.logo.url} />
                             </Link>)}
                         </InfiniteSlider>
                     </div>

@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [{
       hostname: "localhost"
+    }, {
+      hostname: "enduring-eggs-93543058c5.media.strapiapp.com"
     }]
   }
 };

@@ -55,7 +55,7 @@ async function insights() {
                         url: string
                     }
                 }) => <div key={insight.slug} className={cn("flex gap-4 pb-4")}>
-                        {insight.isFeatured ? <Image width={320} height={320} alt={insight.Title} className="rounded" src={process.env.NEXT_CMS_URL + insight.FeaturedImage.url} /> : <Image width={128} height={320} alt={insight.Title} className="rounded-xs" src={process.env.NEXT_CMS_URL + insight.FeaturedImage.url} />}
+                        {insight.isFeatured ? <Image width={320} height={320} alt={insight.Title} className="rounded" src={insight.FeaturedImage.url} /> : <Image width={128} height={320} alt={insight.Title} className="rounded-xs" src={insight.FeaturedImage.url} />}
                         <Link href={"/insight/" + insight.slug} className={cn("font-medium hover:text-orange-600 group flex flex-col text-2xl")}>
                             {insight.isFeatured && <span className="text-sm uppercase flex items-center">
                                 FEATURED <Dot /> PUBLISHED ON {returnDate(insight.createdAt)}

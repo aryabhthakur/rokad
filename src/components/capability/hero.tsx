@@ -47,7 +47,7 @@ const CapabillityHero: FunctionComponent<CapabillityHeroProps> = ({ className, n
                 {featuredPartnership && <>
                     <div className="border-t border-dashed border-neutral-300">
                         {featuredPartnership.map((partner, i) => <div key={i} className="p-8 gap-5">
-                            <Image width={96} height={128} alt={partner.name} className="flex-1" src={process.env.NEXT_CMS_URL + partner.logo.url} unoptimized />
+                            <Image width={96} height={128} alt={partner.name} className="flex-1" src={partner.logo.url} unoptimized />
                             <Separator orientation="vertical" className="bg-orange-500" />
                             <Link href={"/press/" + partner.news} className="font-medium hover:opacity-75 duration-300 py-2 mt-8 w-full group flex text-2xl items-center">
                                 <span className="flex flex-col">

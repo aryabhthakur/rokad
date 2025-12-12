@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { ApolloProvider } from '@apollo/client/react';
-import { getApolloClient } from '../lib/apollo';
+import { getApolloClient } from '@/lib/apollo';
 
 export function Providers({ children }: { children: React.ReactNode }) {
     const client = getApolloClient();

@@ -61,7 +61,7 @@ export default async function PressPage(props: Props): Promise<ReactNode> {
                     </p>
                 </div>
                 <div className="bg-white p-2 rounded-lg">
-                    <Image src={process.env.NEXT_CMS_URL + currentPress.FeaturedImage.url} width={900} height={512} alt={currentPress.title} className="rounded-lg" unoptimized />
+                    <Image src={currentPress.FeaturedImage.url} width={900} height={512} alt={currentPress.title} className="rounded-lg" unoptimized />
                 </div>
             </div>
             <div className="max-w-3xl mx-auto mt-10 border-b pb-10 prose prose-img:rounded-lg prose-img:border-2 prose-img:border-white prose-img:bg-white prose-img:p-5 prose-neutral">
