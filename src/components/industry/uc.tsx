@@ -18,14 +18,14 @@ const IndustryUc: FunctionComponent<IndustryUcProps> = ({ className, ucSectionTi
     return (<>
         <section id="usecases" className={cn(className, "z-10")}>
             <div className="py-40">
-                <div className="max-w-5xl mx-auto mb-10">
-                    <span className="border-2 rounded-full font-medium py-1 px-3">
+                <div className="max-w-5xl mx-auto mb-10 max-sm:px-5">
+                    <span className="border-2 rounded-full max-sm:text-sm font-medium py-1 px-3">
                         The Use-case
                     </span>
-                    <h2 className="text-8xl mt-4 font-semibold">{ucSectionTitle}</h2>
-                    <div className="grid mt-20 grid-cols-2 gap-5">
+                    <h2 className="md:text-8xl text-4xl mt-4 font-semibold">{ucSectionTitle}</h2>
+                    <div className="grid md:mt-20 mt-10 md:grid-cols-2 gap-5">
                         <div>
-                            <h3 className="text-2xl">{ucSectionSubTitle}</h3>
+                            <h3 className="text-lg md:text-2xl">{ucSectionSubTitle}</h3>
                         </div>
                         <div>
                             {ucSectionDesc && <div className="max-w-lg">
@@ -37,11 +37,11 @@ const IndustryUc: FunctionComponent<IndustryUcProps> = ({ className, ucSectionTi
                     </div>
                 </div>
                 <div className="max-w-5xl divide-y divide-dashed border border-dashed border-neutral-300 rounded-lg overflow-hidden divide-neutral-300 mt-20 mx-auto">
-                    {usecases?.map(({ desc, title, icon }) => <div key={title} className="font-medium bg-white px-5 py-4 w-full group flex items-center gap-5">
-                        <div className="size-14 flex bg-neutral-100 rounded-2xl">
-                            <Icon className="m-auto size-8 text-neutral-500" icon={icon} />
+                    {usecases?.map(({ desc, title, icon }) => <div key={title} className="font-medium bg-white px-5 py-4 w-full group flex items-start md:items-center gap-5">
+                        <div className="md:size-14 size-10 flex bg-neutral-100 rounded-lg md:rounded-2xl">
+                            <Icon className="m-auto md:size-8 size-5 text-neutral-500" icon={icon} />
                         </div>
-                        <div>
+                        <div className="flex-1">
                             <h2 className="font-medium">
                                 {title}
                             </h2>
@@ -51,7 +51,7 @@ const IndustryUc: FunctionComponent<IndustryUcProps> = ({ className, ucSectionTi
                         </div>
                     </div>)}
                 </div>
-                <div className="max-w-5xl mx-auto mt-10">
+                <div className="max-w-5xl max-sm:px-5 max-sm:text-sm mx-auto mt-10">
                     <p>
                         {ucSectionFooterNote} Talk to an expert to know more about it, schedule a session with us and let&apos;s figure-out how we can help you.
                     </p>

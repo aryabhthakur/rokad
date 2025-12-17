@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Icon } from '@iconify/react';
+import Link from "next/link"
 
 export function LoginForm({
   className,
@@ -34,11 +35,11 @@ export function LoginForm({
           <form>
             <FieldGroup>
               <Field>
-                <Button variant="outline" type="button">
+                <Button variant="outline" type="button" disabled>
                   <Icon icon={"logos:linkedin-icon"} />
                   Login with LinkedIn
                 </Button>
-                <Button variant="outline" type="button">
+                <Button variant="outline" type="button" disabled>
                   <Icon icon={"logos:google-icon"} />
                   Login with Google
                 </Button>
@@ -69,17 +70,14 @@ export function LoginForm({
               </Field>
               <Field>
                 <Button type="submit">Login</Button>
-                <FieldDescription className="text-center">
-                  Don&apos;t have an account? <a href="#">Sign up</a>
-                </FieldDescription>
               </Field>
             </FieldGroup>
           </form>
         </CardContent>
       </Card>
       <FieldDescription className="px-6 text-center">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
-        and <a href="#">Privacy Policy</a>.
+        By clicking continue, you agree to our <Link href="/legal/terms-of-service">Terms of Service</Link>{" "}
+        and <Link href="/legal/privacy-policy">Privacy Policy</Link>.
       </FieldDescription>
     </div>
   )

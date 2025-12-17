@@ -58,7 +58,7 @@ const Hello: FunctionComponent<HelloProps> = ({ className }) => {
         setPreview(capabilities[ni])
     }
     return (
-        <section id="hello" className={cn("pt-40 -mt-40  relative", className)}>
+        <section id="hello" className={cn("pt-20 md:block hidden relative", className)}>
             <div className="max-w-7xl relative z-10 mx-auto from-white to-neutral-100 bg-gradient-to-br rounded overflow-hidden">
                 <div className="grid grid-cols-2">
                     <div className="p-15 flex flex-col border-b border-l border-white">

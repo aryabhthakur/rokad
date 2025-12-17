@@ -21,14 +21,14 @@ interface IndustrySegmentsProps {
 const IndustrySegments: FunctionComponent<IndustrySegmentsProps> = ({ className, segments }) => {
     return (<>
         <section className={cn("pt-20 pb-40", className)}>
-            <div className="max-w-5xl mx-auto mb-10">
-                <span className="border-2 rounded-full font-medium py-1 px-3">
+            <div className="max-w-5xl mx-auto mb-10 max-sm:px-5">
+                <span className="border-2 rounded-full font-medium max-sm:text-sm py-1 px-3">
                     The Client
                 </span>
-                <h2 className="text-8xl mt-4 font-semibold">Sectors We Serve</h2>
-                <div className="grid mt-20 grid-cols-2 gap-5">
+                <h2 className="text-4xl md:text-8xl mt-4 font-semibold">Sectors We Serve</h2>
+                <div className="grid md:mt-20 mt-10 md:grid-cols-2 gap-5">
                     <div>
-                        <h3 className="opacity-75 text-2xl">Where our experience delivers out-sized outcomes.</h3>
+                        <h3 className="opacity-75 text-lg md:text-2xl">Where our experience delivers out-sized outcomes.</h3>
                     </div>
                     <div>
                         <p className="opacity-75 max-w-lg">
@@ -40,8 +40,8 @@ const IndustrySegments: FunctionComponent<IndustrySegmentsProps> = ({ className,
             <div className="max-w-6xl mx-auto mt-20">
                 <Carousel>
                     <CarouselContent>
-                        {segments.map((item, i) => <CarouselItem key={i} className="h-[480px] !pl-0 basis-96 bg-center bg-no-repeat relative rounded overflow-hidden ml-5" style={{ backgroundImage: `url('${item.img.url}')` }}>
-                            <div className="w-full p-8 text-white flex flex-col h-full bg-black/75">
+                        {segments.map((item, i) => <CarouselItem key={i} className="h-[480px] !pl-0 basis-80 md:basis-96 bg-center bg-no-repeat relative rounded overflow-hidden md:first:ml-10 ml-5" style={{ backgroundImage: `url('${item.img.url}')` }}>
+                            <div className="w-full p-4 md:p-8 text-white flex flex-col h-full bg-black/75">
                                 <p className="text-sm opacity-75">
                                     {item.howWeHelp}
                                 </p>

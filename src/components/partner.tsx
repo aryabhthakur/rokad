@@ -21,12 +21,12 @@ const Partner: FunctionComponent<PartnerProps> = ({ className, partners }) => {
     return (
         <section className={cn(className, "pb-40")}>
             <div className="max-w-6xl border border-neutral-300 border-dashed py-15 px-5 rounded bg-white  mx-auto">
-                <div className="max-w-5xl grid grid-cols-2 gap-5 mx-auto">
+                <div className="max-w-5xl grid md:grid-cols-2 gap-5 mx-auto">
                     <div>
                         <span className="border-2 rounded-full font-medium py-1 px-3">
                             Rokad&apos;s Partners
                         </span>
-                        <h2 className="text-4xl mt-4 font-semibold">Our Strategic Partnerships</h2>
+                        <h2 className="text-2xl md:text-4xl mt-4 font-semibold">Our Strategic Partnerships</h2>
                         <h3 className="text-xl mt-4 font-medium">
                             Part of India&apos;s Fastest-Growing Business Ecosystem
                         </h3>

@@ -2,14 +2,16 @@ import { Button } from "@/components/ui/button";
 import { getServerApollo } from "@/lib/apollo-server";
 import { gql } from "@apollo/client";
 import { ChevronRight } from "lucide-react";
-import Image from "next/image";
 import { ReactNode } from "react";
 import Markdown from "react-markdown";
 import { notFound } from 'next/navigation';
 import remarkGfm from 'remark-gfm';
 import { Separator } from "@/components/ui/separator";
+import { Metadata, ResolvingMetadata } from "next/types";
 
-type Props = { params: { slug: string } };
+type Props = {
+    params: Promise<{ slug: string }>
+}
 
 const QUERY = gql`query CaseStudies($filters: CaseStudyFiltersInput) {
   caseStudies(filters: $filters) {
@@ -22,8 +24,54 @@ const QUERY = gql`query CaseStudies($filters: CaseStudyFiltersInput) {
   }
 }`
 
-export default async function InsightPage(props: Props): Promise<ReactNode> {
-    const { slug } = await props.params;
+
+// generateStaticParams: return array of { slug } objects (what Next expects)
+export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
+    const q = gql`
+  query CaseStudies {
+    caseStudies {
+      slug
+    }
+  }
+  `
+    const client = getServerApollo();
+    const { data } = await client.query({ query: q });
+
+    // @ts-expect-error if GraphQL types are loose
+    return data.caseStudies.map((c: { slug: string }) => ({ slug: c.slug }));
+}
+
+export async function generateMetadata(
+    { params }: Props,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    // Await the params
+    const { slug } = await params;
+
+    const client = getServerApollo();
+    const { data } = await client.query({
+        query: QUERY,
+        variables: {
+            filters: { slug: { eq: slug } }
+        }
+    });
+
+    // @ts-expect-error type err from GraphQL loose typing
+    const currentCap = data.caseStudies?.[0];
+    if (!currentCap) {
+        return { title: 'Rokad', description: '' };
+    }
+
+    return {
+        title: currentCap.name,
+        description: currentCap.subtitle,
+    }
+}
+
+export default async function CSPage(props: Props): Promise<ReactNode> {
+    // Await the params here
+    const params = await props.params;
+    const { slug } = params;
     const client = getServerApollo();
     const { data } = await client.query({
         query: QUERY,

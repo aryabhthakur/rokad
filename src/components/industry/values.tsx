@@ -18,14 +18,14 @@ const IndustryValues: FunctionComponent<IndustryValuesProps> = ({ className, val
     return (<>
         <section id="Values" className={cn(className, "relative z-10")}>
             <div className="py-40">
-                <div className="max-w-5xl mx-auto mb-10">
-                    <span className="border-2 rounded-full font-medium py-1 px-3">
+                <div className="max-w-5xl mx-auto mb-10 max-sm:px-5">
+                    <span className="border-2 rounded-full font-medium max-sm:text-sm py-1 px-3">
                         The Solution
                     </span>
-                    <h2 className="text-8xl mt-4 font-semibold">{valueSectionTitle}</h2>
-                    <div className="grid mt-20 grid-cols-2 gap-5">
+                    <h2 className="text-4xl md:text-8xl mt-4 font-semibold">{valueSectionTitle}</h2>
+                    <div className="grid mt-10 md:mt-20 md:grid-cols-2 gap-5">
                         <div>
-                            <h3 className="opacity-75 text-2xl">{valueSectionSubTitle}</h3>
+                            <h3 className="opacity-75 text-lg md:text-2xl">{valueSectionSubTitle}</h3>
                         </div>
                         <div>
                             {valueSectionDesc && <div className="opacity-75 max-w-lg">
@@ -36,7 +36,7 @@ const IndustryValues: FunctionComponent<IndustryValuesProps> = ({ className, val
                         </div>
                     </div>
                 </div>
-                <div className="max-w-6xl mx-auto mt-20 grid grid-cols-3 gap-2">
+                <div className="max-w-6xl mx-auto mt-10 max-sm:px-5 md:mt-20 grid md:grid-cols-3 gap-2">
                     {values?.map(v => <div key={v.title} className="w-full p-5 h-64 flex flex-col border border-dashed border-neutral-300 rounded-lg bg-white">
                         <div className="size-14 flex bg-neutral-100 rounded-2xl">
                             <Icon icon={v.icon} className="size-8 text-neutral-500 m-auto" />
@@ -49,8 +49,8 @@ const IndustryValues: FunctionComponent<IndustryValuesProps> = ({ className, val
                         </p>
                     </div>)}
                 </div>
-                <div className="max-w-5xl mx-auto mt-10">
-                    <p>
+                <div className="max-w-5xl mx-auto mt-5 md:mt-10 max-sm:px-5">
+                    <p className="max-sm:text-sm">
                         {valueSectionFooterNote} Talk to an expert to know more about it, schedule a session with us and let&apos;s figure-out how we can help you.
                     </p>
                     <Button className="mt-4 !pl-4">

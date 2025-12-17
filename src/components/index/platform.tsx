@@ -13,19 +13,19 @@ const Platform: FunctionComponent<PlatformProps> = ({ className }) => {
     return (<>
         <section className={cn("flex flex-col relative overflow-hidden", className)}>
             <div className="relative z-20 max-w-6xl pb-15 w-full mx-auto border-dashed border-x border-neutral-300">
-                <div className="px-20 py-40 text-center">
-                    <span className="border-2 w-fit h-fit text-sm rounded-full font-medium py-1 px-3">
+                <div className="px-10 md:px-20 py-20 md:py-40 text-center">
+                    <span className="border-2 w-fit h-fit text-xs md:text-sm rounded-full font-medium py-1 px-3">
                         Rokad&apos;s AI based Product Suite
                     </span>
-                    <h3 className="text-8xl font-semibold mt-5"><i className="font-thin">The</i> AI Platform</h3>
-                    <p className="mt-3 mb-6 max-w-xl mx-auto text-neutral-500">A real-time, AI-powered cloud platform that helps businesses understand the market, sell through omnichannel, manage payments, and more — combined with Rokad’s Managed Services to support every stage of the product lifecycle.</p>
-                    <div className="flex gap-2 justify-center">
-                        <Button className="pl-4!" asChild>
+                    <h3 className="text-4xl md:text-8xl font-semibold mt-5"><i className="font-thin">The</i> AI Platform</h3>
+                    <p className="mt-3 max-sm:text-sm mb-6 max-w-xl mx-auto text-neutral-500">A real-time, AI-powered cloud platform that helps businesses understand the market, sell through omnichannel, manage payments, and more — combined with Rokad’s Managed Services to support every stage of the product lifecycle.</p>
+                    <div className="flex max-sm:flex-col md:justify-center w-full mt-5 gap-2 md:gap-4">
+                        <Button className="pl-4! md:w-fit w-full" asChild>
                             <Link href={"/platform"}>
                                 Learn more <ArrowUpRight />
                             </Link>
                         </Button>
-                        <Button className="pl-4!" asChild variant={"outline"}>
+                        <Button className="pl-4! md:w-fit w-full" asChild variant={"outline"}>
                             <Link href={"/contact-us"}>
                                 Talk to an expert <ChevronRight />
                             </Link>
@@ -33,7 +33,7 @@ const Platform: FunctionComponent<PlatformProps> = ({ className }) => {
                     </div>
                 </div>
                 <div className="border-t border-dashed border-neutral-300">
-                    <div className="text-black *:p-8 font-medium grid grid-cols-3 text-sm divide-x divide-dashed divide-neutral-300 *:border-b *:border-dashed *:border-neutral-300 *:flex  *:items-start *:bg-white space-y-1 *:h-96 *:flex-col">
+                    <div className="text-black *:p-8 font-medium grid md:grid-cols-3 text-sm divide-x divide-dashed divide-neutral-300 *:border-b *:border-dashed *:border-neutral-300 *:flex  *:items-start *:bg-white space-y-1 *:h-64 *:md:h-96 *:flex-col">
                         <div>
                             <div className="size-16 bg-orange-100 flex rounded-2xl text-orange-600">
                                 <Icon icon={"solar:chat-square-2-bold-duotone"} className="size-11 m-auto" />

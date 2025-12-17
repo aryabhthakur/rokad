@@ -20,18 +20,18 @@ function Company() {
     ]
     return (<>
         <section className="pt-60 pb-40">
-            <div className="max-w-5xl mx-auto mb-10">
-                <span className="border-2 rounded-full font-medium py-1 px-3">
+            <div className="max-w-5xl mx-auto max-sm:px-5 mb-10">
+                <span className="border-2 max-sm:text-sm rounded-full font-medium py-1 px-3">
                     The Company
                 </span>
-                <h2 className="text-8xl mt-4 font-semibold">About Rokad</h2>
-                <h3 className="opacity-75 text-xl">
+                <h2 className="text-4xl md:text-8xl mt-4 font-semibold">About Rokad</h2>
+                <h3 className="opacity-75 text-sm md:text-xl">
                     Legal Name: <i>Rokad Retail Ventures Private Limited</i>
                 </h3>
                 <h3 className="opacity-75 text-xl mt-20 mb-5">
                     Our Offerings
                 </h3>
-                <div className="grid grid-cols-3 gap-5 *:h-80 *:bg-white *:rounded *:p-5">
+                <div className="grid md:grid-cols-3 gap-5 *:h-80 *:bg-white *:rounded *:p-5">
                     <Link href={"/platform"} className="hover:text-orange-500 duration-300 flex flex-col">
                         <Cpu size={64} strokeWidth={1} />
                         <h3 className="text-lg mt-auto font-medium ">
@@ -87,7 +87,7 @@ function Company() {
                 <h3 className="opacity-75 text-xl mb-5">
                     Our Mission
                 </h3>
-                <div className="grid grid-cols-3 gap-5 *:bg-white *:rounded *:p-5">
+                <div className="grid md:grid-cols-3 gap-5 *:bg-white *:rounded *:p-5">
                     <div>
                         Great products deserve a smoother path to market.
                     </div>

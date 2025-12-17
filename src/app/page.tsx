@@ -90,11 +90,11 @@ export default async function Home() {
       <Insights {...homeData} />
       <section id="press">
         <div className="max-w-6xl mx-auto border-x border-dashed border-neutral-300 py-20">
-          <div className="max-w-5xl mx-auto mb-10">
-            <span className="border-2 rounded-full font-medium py-1 px-3">
+          <div className="max-w-5xl mx-auto mb-10 max-sm:px-5">
+            <span className="border-2 max-sm:text-sm rounded-full font-medium py-1 px-3">
               Press Releases
             </span>
-            <h2 className="text-8xl mt-4 font-semibold"><i className="font-thin">In the</i> News</h2>
+            <h2 className="text-4xl md:text-8xl mt-4 font-semibold"><i className="font-thin">In the</i> News</h2>
           </div>
           <div className="divide-y divide-dashed divide-neutral-300 max-w-5xl mx-auto border border-dashed border-neutral-300 bg-white rounded">
             {homeData.media_centers.map((press: { title: string, public_on: string, slug: string, FeaturedImage: { url: string } }) => <Link key={press.slug} href={"/press/" + press.slug} className={"font-medium hover:text-orange-600 group flex flex-col text-xl p-5 w-full"}>
@@ -106,7 +106,7 @@ export default async function Home() {
               </h3>
             </Link>)}
           </div>
-          <div className="max-w-5xl mx-auto mt-5 text-neutral-500">
+          <div className="max-w-5xl mx-auto mt-5 max-sm:px-5 text-neutral-500">
             To know more, visit <Link href={"/company/media-center"} className="text-black hover:text-orange-600 font-medium">Rokad&apos;s Media Center</Link>
           </div>
         </div>

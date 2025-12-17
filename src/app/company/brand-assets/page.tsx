@@ -5,20 +5,20 @@ import Link from "next/link";
 
 function BrandAsset() {
     return (<>
-        <section className="pt-60 pb-20">
-            <div className="max-w-5xl mx-auto mb-10">
-                <span className="border-2 rounded-full font-medium py-1 px-3">
+        <section className="pt-50 md:pt-60 pb-20">
+            <div className="max-w-5xl mx-auto mb-10 max-sm:px-5">
+                <span className="border-2 max-sm:text-sm rounded-full font-medium py-1 px-3">
                     Rokad&apos;s Digital Assets
                 </span>
-                <h2 className="text-8xl mt-4 font-semibold">Brand Assets</h2>
-                <div className="grid mt-20 grid-cols-2 gap-5">
+                <h2 className="text-4xl md:text-8xl mt-4 font-semibold">Brand Assets</h2>
+                <div className="grid mt-10 md:mt-20 md:grid-cols-2 gap-5">
                     <div>
-                        <h3 className="opacity-75 text-2xl">
+                        <h3 className="opacity-75 text-xl md:text-2xl">
                             Rokad&apos;s Brand Guidelines
                         </h3>
-                        <div className="opacity-75 space-y-3 mt-4">
+                        <div className="opacity-75 max-sm:text-sm space-y-3 mt-4">
                             <p>
-                                When using the assets you see on this page, we ask that you keep just a few things in mind …
+                                When using the assets you see on this page, we ask that you keep just a few things in mind....
                             </p>
                             <p>
                                 Please do not:
@@ -38,8 +38,8 @@ function BrandAsset() {
                     </div>
 
                 </div>
-                <div className="grid mt-20 grid-cols-4 gap-2 *:rounded *:p-8">
-                    <div className="col-span-2 bg-white">
+                <div className="grid mt-20 md:grid-cols-4 gap-2 *:rounded *:p-8">
+                    <div className="md:col-span-2 bg-white">
                         <p className="uppercase text-sm font-medium text-neutral-500">
                             Colors
                         </p>
@@ -49,7 +49,7 @@ function BrandAsset() {
                             <Button className="bg-neutral-100 text-black hover:bg-neutral-100">#f5f5f5</Button>
                         </div>
                     </div>
-                    <div className="col-span-2 bg-white">
+                    <div className="md:col-span-2 bg-white">
                         <p className="uppercase text-sm font-medium text-neutral-500">
                             Font
                         </p>
@@ -66,11 +66,11 @@ function BrandAsset() {
                             </Button>
                         </div>
                     </div>
-                    <div className="col-span-4 bg-white">
+                    <div className="md:col-span-4 bg-white">
                         <p className="uppercase text-sm font-medium text-neutral-500">
                             Logos (Backgrounds are transparent)
                         </p>
-                        <div className="grid grid-cols-4 h-64 mt-5 gap-2">
+                        <div className="grid md:grid-cols-4 *:h-64 mt-5 gap-2">
                             <div className="bg-black flex rounded">
                                 <Image src={"/alt-logo-icon.png"} alt="Rokad Icon Logo" width={128} height={128} className="m-auto" />
                             </div>

@@ -23,14 +23,14 @@ const IndustryHero: FunctionComponent<IndustryHeroProps> = ({ className, name, s
         <section className={cn("relative", className)}>
             <div className="border-t border-dashed h-[630px] w-full top-40 left-0 border-neutral-300 absolute" />
             <div className="max-w-6xl pt-40 relative z-10 mx-auto border-x border-dashed border-neutral-300">
-                <div className="grid gap-10 grid-cols-2 divide-x divide-dashed divide-neutral-300">
-                    <div className="p-8 pt-30 pb-30">
+                <div className="grid md:gap-10 md:grid-cols-2 divide-x divide-dashed divide-neutral-300">
+                    <div className="p-8 md:py-30">
                         <span className="border-2 w-fit text-sm rounded-full font-medium py-1 px-3">
                             Industry
                         </span>
-                        <h2 className="text-8xl mt-5 font-semibold">{name}</h2>
+                        <h2 className="text-4xl md:text-8xl mt-5 font-semibold">{name}</h2>
                     </div>
-                    <div className="text-sm max-w-lg space-y-5 p-8 pt-30 pb-30">
+                    <div className="text-sm max-w-lg space-y-5 p-8 md:py-30">
                         <h3 className="font-medium text-lg">{subtitle}</h3>
                         {HeroDesc &&
                             <Markdown>
@@ -40,23 +40,23 @@ const IndustryHero: FunctionComponent<IndustryHeroProps> = ({ className, name, s
                     </div>
                 </div>
                 <div className="pt-20 border-t border-dashed border-neutral-300">
-                    <div className="px-8 text-center">
+                    <div className="px-8 md:text-center">
                         <span className="border-2 rounded-full font-medium py-1 px-3">
                             Current Trends
                         </span>
-                        <h2 className="text-4xl mt-4 font-semibold ">{trendSectionTitle}</h2>
-                        <h3 className="opacity-75 text-xl  mt-5">{trendSectionSubTitle}</h3>
+                        <h2 className="text-xl md:text-4xl mt-4 font-semibold ">{trendSectionTitle}</h2>
+                        <h3 className="opacity-75 md:text-xl mt-2 md:mt-5">{trendSectionSubTitle}</h3>
                     </div>
                     <div className="divide-dashed border-t bg-white border-dashed mt-16 grid divide-y">
-                        {trends?.map((v, i) => <div key={i} className="w-full p-5 flex items-center gap-5">
-                            <div className="size-14 flex bg-neutral-100 rounded-2xl">
-                                <Icon className="m-auto size-8 text-neutral-500" icon={v.icon} />
+                        {trends?.map((v, i) => <div key={i} className="w-full p-5 flex items-start md:items-center gap-5">
+                            <div className="md:size-14 size-10 flex bg-neutral-100 rounded-lg md:rounded-2xl">
+                                <Icon className="m-auto md:size-8 size-5 text-neutral-500" icon={v.icon} />
                             </div>
-                            <div>
-                                <h3 className="font-medium">
+                            <div className="flex-1">
+                                <h3 className="text-sm md:text-base font-medium">
                                     {v.title}
                                 </h3>
-                                <p className="text-sm text-neutral-500">
+                                <p className="text-xs md:text-sm text-neutral-500">
                                     {v.desc}
                                 </p>
                             </div>

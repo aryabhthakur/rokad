@@ -28,14 +28,14 @@ const CapabillityHero: FunctionComponent<CapabillityHeroProps> = ({ className, n
         <section className={cn("", className)}>
             <div className="border-t border-dashed h-[630px] w-full top-40 left-0 border-neutral-300 absolute" />
             <div className="max-w-6xl relative z-10 pt-40 border-x border-dashed border-neutral-300 mx-auto">
-                <div className="grid gap-10 grid-cols-2 divide-x divide-dashed divide-neutral-300">
-                    <div className="p-8 pt-30 pb-30">
+                <div className="grid md:gap-10 md:grid-cols-2 divide-x divide-dashed divide-neutral-300">
+                    <div className="p-8 pt-15 md:py-30">
                         <span className="border-2 w-fit text-sm rounded-full font-medium py-1 px-3">
                             Capability
                         </span>
-                        <h2 className="text-6xl leading-20 mt-5 font-semibold">{name}</h2>
+                        <h2 className="text-3xl md:text-6xl md:leading-20 mt-5 font-semibold">{name}</h2>
                     </div>
-                    <div className="text-sm max-w-lg space-y-5 p-8 pt-20">
+                    <div className="text-sm max-w-lg space-y-5 p-8 md:pt-20">
                         <h3 className="font-medium text-lg">{subtitle}</h3>
                         {HeroDesc &&
                             <Markdown>
@@ -51,10 +51,10 @@ const CapabillityHero: FunctionComponent<CapabillityHeroProps> = ({ className, n
                             <Separator orientation="vertical" className="bg-orange-500" />
                             <Link href={"/press/" + partner.news} className="font-medium hover:opacity-75 duration-300 py-2 mt-8 w-full group flex text-2xl items-center">
                                 <span className="flex flex-col">
-                                    <span className="text-xl font-medium">
+                                    <span className="text-base md:text-xl font-medium">
                                         {partner.name}
                                     </span>
-                                    <span className="text-sm">
+                                    <span className="text-xs md:text-sm">
                                         {partner.desc}
                                     </span>
                                 </span>

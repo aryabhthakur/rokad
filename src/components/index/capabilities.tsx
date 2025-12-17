@@ -20,28 +20,28 @@ const Capabilities: FunctionComponent<CapabilitiesProps> = ({ className, capabil
     };
     return (
         <section className={cn("text-white bg-linear-to-b from-rose-950 to-rose-800", className)}>
-            <div className="max-w-6xl py-40 border-x border-dashed border-rose-800 border-t pb-30 mx-auto">
-                <div className="max-w-5xl mx-auto">
-                    <div className="grid grid-cols-2 gap-10">
+            <div className="max-w-6xl py-40 max-sm:pb-0 border-x border-dashed border-rose-800 border-t mx-auto">
+                <div className="max-w-5xl mx-auto px-5">
+                    <div className="grid md:grid-cols-2 gap-10">
                         <div>
                             <span className="border-2 w-fit text-sm rounded-full font-medium py-1 px-3">
                                 Rokad&apos;s Capabilities
                             </span>
-                            <h3 className="text-5xl mt-5 font-semibold">
+                            <h3 className="text-3xl md:text-5xl mt-5 font-semibold">
                                 <i className="font-thin">The</i> Service Hub
                             </h3>
                         </div>
                         <div>
-                            <h3 className="text-xl mb-2">
+                            <h3 className="md:text-xl mb-2">
                                 {data["sub-title"]}
                             </h3>
-                            <p className="text-rose-300 leading-6 max-w-2xl">
+                            <p className="text-rose-300 max-sm:text-sm leading-6 max-w-2xl">
                                 {data.overview}
                             </p>
                         </div>
                     </div>
                 </div>
-                <div className="grid divide-x divide-y divide-dashed grid-cols-3 mt-40 divide-rose-800 border-t border-dashed border-rose-800 *:nth-[3]:border-r-0 *:nth-[4]:border-b-0 *:nth-[5]:border-b-0">
+                <div className="grid md:divide-x divide-y divide-dashed md:grid-cols-3 mt-40 divide-rose-800 border-t border-dashed border-rose-800 *:nth-[3]:border-r-0 *:nth-[4]:border-b-0 *:nth-[5]:border-b-0">
                     {capabilities.map((item, i) => <div key={i} className="flex flex-col h-80 p-8">
                         <h2 className="text-2xl font-medium mb-2">
                             {item.name}
@@ -50,7 +50,7 @@ const Capabilities: FunctionComponent<CapabilitiesProps> = ({ className, capabil
                             {item.subtitle}
                         </p>
                         <Button asChild className="bg-white/10 hover:bg-white/20 w-fit pl-5! mt-auto hover:text-white">
-                            <Link href={item.subtitle}>
+                            <Link href={"/capability/" + item.slug}>
                                 Learn more <ChevronRight />
                             </Link>
                         </Button>

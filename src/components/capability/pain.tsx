@@ -24,12 +24,12 @@ interface CapabilityPainProps {
 const CapabilityPain: FunctionComponent<CapabilityPainProps> = ({ className, painSectionDesc, painSectionSubTitle, painSectionTitle, painpoints }) => {
     return (<>
         <section className={cn("pt-40 pb-40 from-white to-transparent bg-linear-to-b border-t border-dashed border-neutral-300", className)}>
-            <div className="max-w-5xl mx-auto mb-10">
-                <span className="border-2 rounded-full font-medium py-1 px-3">
+            <div className="max-w-5xl mx-auto mb-10 max-sm:px-5">
+                <span className="border-2 rounded-full max-sm:text-sm font-medium py-1 px-3">
                     Pain Points
                 </span>
-                <h2 className="text-7xl mt-4 font-semibold">{painSectionTitle}</h2>
-                <div className="grid mt-20 grid-cols-2 gap-5">
+                <h2 className="text-3xl md:text-7xl mt-4 font-semibold">{painSectionTitle}</h2>
+                <div className="grid mt-10 md:mt-20 md:grid-cols-2 gap-5">
                     <div>
                         <h3 className="text-2xl opacity-75">{painSectionSubTitle}</h3>
                     </div>
@@ -40,9 +40,9 @@ const CapabilityPain: FunctionComponent<CapabilityPainProps> = ({ className, pai
                     </div>
                 </div>
             </div>
-            <Accordion type="single" collapsible className="max-w-5xl mx-auto">
+            <Accordion type="single" collapsible className="max-w-5xl mx-auto max-sm:px-5">
                 {painpoints?.map((point) => <AccordionItem key={point.title} value={point.title}>
-                    <AccordionTrigger className="text-2xl"><span className="flex gap-1"><Asterisk className="text-red-600" /> {point.title}</span></AccordionTrigger>
+                    <AccordionTrigger className="text-lg md:text-2xl"><span className="flex gap-1"><Asterisk className="text-red-600" /> {point.title}</span></AccordionTrigger>
                     <AccordionContent>
                         <p className="pl-7 text-base">
                             {point.desc}

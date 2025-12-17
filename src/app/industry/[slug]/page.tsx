@@ -11,8 +11,11 @@ import { notFound } from 'next/navigation';
 import IndustryValues from "@/components/industry/values";
 import IndustryUc from "@/components/industry/uc";
 import Insights from "@/components/insights";
+import { Metadata, ResolvingMetadata } from "next/types";
 
-type Props = { params: { slug: string } };
+type Props = {
+  params: Promise<{ slug: string }>
+}
 
 const QUERY = gql`
 query Industries($filters: IndustryFiltersInput) {
@@ -91,8 +94,53 @@ query Industries($filters: IndustryFiltersInput) {
 }
         `
 
+// generateStaticParams: return array of { slug } objects (what Next expects)
+export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
+  const q = gql`
+  query Query {
+    industries {
+      slug
+    }
+  }
+  `
+  const client = getServerApollo();
+  const { data } = await client.query({ query: q });
+
+  // @ts-expect-error if GraphQL types are loose
+  return data.industries.map((c: { slug: string }) => ({ slug: c.slug }));
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // Await the params
+  const { slug } = await params;
+
+  const client = getServerApollo();
+  const { data } = await client.query({
+    query: QUERY,
+    variables: {
+      filters: { slug: { eq: slug } }
+    }
+  });
+
+  // @ts-expect-error type err from GraphQL loose typing
+  const currentCap = data.industries?.[0];
+  if (!currentCap) {
+    return { title: 'Rokad', description: '' };
+  }
+
+  return {
+    title: currentCap.name,
+    description: currentCap.subtitle,
+  }
+}
+
+
 export default async function IndustryPage(props: Props): Promise<ReactNode> {
-  const { slug } = await props.params;
+  const params = await props.params;
+  const { slug } = params;
   const client = getServerApollo();
   const { data } = await client.query({
     query: QUERY,

@@ -8,9 +8,14 @@ import CapabilityPain from "@/components/capability/pain";
 import Insights from "@/components/insights";
 import CapabilityCases from "@/components/capability/cases";
 import CapabilityService from "@/components/capability/services";
-import { Metadata } from "next/types";
+import { Metadata, ResolvingMetadata } from "next/types";
 import Partner from "@/components/partner";
 import CapabilityOutcome from "@/components/capability/outcome";
+
+type Props = {
+  params: Promise<{ slug: string }>
+}
+
 const QUERY = gql`
 query Capabilities($filters: CapabilityFiltersInput) {
   capabilities(filters: $filters) {
@@ -85,53 +90,71 @@ query Capabilities($filters: CapabilityFiltersInput) {
   }
 }
 `
-type Props = { params: { slug: string } };
 
+// generateStaticParams: return array of { slug } objects (what Next expects)
+export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
+  const q = gql`
+  query Capabilities {
+    capabilities {
+      slug
+    }
+  }
+  `
+  const client = getServerApollo();
+  const { data } = await client.query({ query: q });
+
+  // @ts-expect-error if GraphQL types are loose
+  return data.capabilities.map((c: { slug: string }) => ({ slug: c.slug }));
+}
+
+// generateMetadata: accept params synchronously (do not await props.params)
+// note: inline param typing prevents mismatch with Next's checker
 export async function generateMetadata(
-  props: Props
+  { params }: Props,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
-  // read route params
-  const { slug } = await props.params
+  // Await the params
+  const { slug } = await params;
 
   const client = getServerApollo();
   const { data } = await client.query({
     query: QUERY,
     variables: {
-      "filters": {
-        "slug": {
-          "eq": slug
-        }
-      }
+      filters: { slug: { eq: slug } }
     }
-  })
+  });
 
-  // @ts-expect-error type err
-  const currentCap = data.capabilities[0]
+  // @ts-expect-error type err from GraphQL loose typing
+  const currentCap = data.capabilities?.[0];
+  if (!currentCap) {
+    return { title: 'Rokad', description: '' };
+  }
+
   return {
     title: currentCap.name,
     description: currentCap.subtitle,
   }
 }
-
-export default async function CapabilityPage(props: Props): Promise<ReactNode> {
-  const { slug } = await props.params;
+// Page component: destructure params inline and don't await them
+export default async function CapabilityPage(
+  props: Props
+): Promise<ReactNode> {
+  // Await the params here
+  const params = await props.params;
+  const { slug } = params;
   const client = getServerApollo();
   const { data } = await client.query({
     query: QUERY,
     variables: {
-      "filters": {
-        "slug": {
-          "eq": slug
-        }
-      }
+      filters: { slug: { eq: slug } }
     }
-  })
+  });
 
   // @ts-expect-error type err
-  const currentCap = data.capabilities[0]
+  const currentCap = data.capabilities?.[0];
 
   if (!currentCap) {
-    return notFound()
+    return notFound();
   }
 
   return (<>
@@ -139,12 +162,12 @@ export default async function CapabilityPage(props: Props): Promise<ReactNode> {
     <CapabilityPain {...currentCap} />
     <CapabilityService slug={slug} {...currentCap} />
     <section className="pb-40">
-      <div className="max-w-5xl mx-auto mb-10">
-        <span className="border-2 rounded-full font-medium py-1 px-3">
+      <div className="max-w-5xl mx-auto mb-10 max-sm:px-5">
+        <span className="border-2 rounded-full font-medium py-1 max-sm:text-sm px-3">
           Rokad&apos;s Deliverables
         </span>
-        <h2 className="text-8xl mt-4 font-semibold">{currentCap.offeringSectionTitle}</h2>
-        <div className="grid mt-20 grid-cols-2 gap-5">
+        <h2 className="text-4xl md:text-8xl mt-4 font-semibold">{currentCap.offeringSectionTitle}</h2>
+        <div className="grid mt-10 md:mt-20 md:grid-cols-2 gap-5">
           <div>
             <h3 className="text-2xl opacity-75">{currentCap.offeringSectionSubTitle}</h3>
           </div>
@@ -155,7 +178,7 @@ export default async function CapabilityPage(props: Props): Promise<ReactNode> {
           </div>
         </div>
       </div>
-      <div className="max-w-6xl divide-dashed border rounded border-dashed bg-white mx-auto mt-20 grid grid-cols-3 divide-x divide-y *:nth-[3]:border-r-0 *:nth-[4]:border-b-0 *:nth-[5]:border-b-0">
+      <div className="max-w-6xl divide-dashed border rounded border-dashed bg-white mx-auto mt-20 grid md:grid-cols-3 divide-x divide-y *:nth-[3]:border-r-0 *:md:nth-[4]:border-b-0 *:md:nth-[5]:border-b-0">
         {currentCap.offerings?.map((offering: {
           title: string, desc: string, icon: string
         }) => <div key={offering.title} className="w-full p-5 h-64 flex flex-col">

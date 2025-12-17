@@ -18,31 +18,28 @@ interface CapabilityCasesProps {
 const CapabilityCases: FunctionComponent<CapabilityCasesProps> = ({ className, case_studies, casestudiesSectionDesc, casestudiesSectionSubTitle, casestudiesSectionTitle }) => {
     return (<>
         <section className={cn(className, "pb-40")}>
-            <div className="max-w-5xl mx-auto mb-10">
-                <span className="border-2 rounded-full font-medium py-1 px-3">
+            <div className="max-w-5xl mx-auto mb-10 max-sm:px-5">
+                <span className="border-2 max-sm:text-sm rounded-full font-medium py-1 px-3">
                     Client Stories
                 </span>
-                <h2 className="text-8xl mt-4 font-semibold">{casestudiesSectionTitle}</h2>
-                <div className="grid mt-20 grid-cols-2 gap-5">
+                <h2 className="text-4xl md:text-8xl mt-4 font-semibold">{casestudiesSectionTitle}</h2>
+                <div className="grid mt-10 md:mt-20 md:grid-cols-2 gap-5">
                     <div>
                         <h3 className="text-2xl mb-5">{casestudiesSectionSubTitle}</h3>
                         <Markdown>
                             {casestudiesSectionDesc}
                         </Markdown>
-                        <Button className="mt-5">
-                            Case Studies <ArrowUpRight />
-                        </Button>
                     </div>
                     <div>
                         <div className="mb-5">
-                            <span className="border-2 rounded-full text-sm font-medium py-1 px-3">
+                            <span className="border-2 max-sm:text-sm rounded-full text-sm font-medium py-1 px-3">
                                 Selected Stories
                             </span>
                         </div>
                         <div className="divide-y">
                             {case_studies?.map((case_study: {
                                 title: string, slug: string, client: string
-                            }) => <Link key={case_study.slug} href={"/case-study/" + case_study.slug} className="font-medium hover:text-orange-600 group py-3 w-full flex text-2xl">
+                            }) => <Link key={case_study.slug} href={"/case-study/" + case_study.slug} className="font-medium hover:text-orange-600 group py-3 w-full flex text-lg md:text-2xl">
                                     <span className="flex-col flex">
                                         <h3 className="flex-1">
                                             {case_study.title}
