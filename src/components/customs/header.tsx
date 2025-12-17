@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FunctionComponent, useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { ArrowUpRight, ChevronDown, ChevronRight, MenuIcon, Search, UserCircle, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, ChevronRight, MenuIcon, Search, X } from "lucide-react";
 import { LoginForm } from "../login-form";
 import {
     NavigationMenu,
@@ -17,6 +17,7 @@ import {
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { useIsMobile } from "@/lib/use-mobile";
+import { usePathname } from "next/navigation";
 
 interface HeaderProps {
     className?: string
@@ -40,6 +41,10 @@ const Header: FunctionComponent<HeaderProps> = ({ className, menus }) => {
     const [openMobMenu, setOpenMobMenu] = useState(false)
     const isMobile = useIsMobile()
     const [omp, setOmp] = useState<string | null>(null)
+    const pathname = usePathname();
+    useEffect(() => {
+        setOpenMobMenu(false);
+    }, [pathname]);
 
     useEffect(() => {
         function onScroll() {

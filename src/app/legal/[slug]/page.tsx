@@ -1,6 +1,5 @@
 import { getServerApollo } from "@/lib/apollo-server";
 import { gql } from "@apollo/client";
-import Image from "next/image";
 import { ReactNode } from "react";
 import Markdown from "react-markdown";
 import { notFound } from 'next/navigation';
@@ -9,15 +8,13 @@ import { Metadata, ResolvingMetadata } from "next/types";
 type Props = {
     params: Promise<{ slug: string }>
 }
-const QUERY = gql`query MediaCenters($filters: MediaCenterFiltersInput) {
-  mediaCenters(filters: $filters) {
-    title
+const QUERY = gql`query LegalPage($filters: LegalFiltersInput) {
+  legals(filters: $filters) {
+    Content
+    name
     slug
-    content
-    public_on
-    FeaturedImage {
-      url
-    }
+    updatedAt
+    ReachOutEmail
   }
 }`
 
@@ -25,7 +22,7 @@ const QUERY = gql`query MediaCenters($filters: MediaCenterFiltersInput) {
 export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
     const q = gql`
   query Query {
-    mediaCenters {
+    legals {
       slug
     }
   }
@@ -34,7 +31,7 @@ export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
     const { data } = await client.query({ query: q });
 
     // @ts-expect-error if GraphQL types are loose
-    return data.mediaCenters.map((c: { slug: string }) => ({ slug: c.slug }));
+    return data.legals.map((c: { slug: string }) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata(
@@ -53,18 +50,18 @@ export async function generateMetadata(
     });
 
     // @ts-expect-error type err from GraphQL loose typing
-    const currentCap = data.mediaCenters?.[0];
+    const currentCap = data.legals?.[0];
     if (!currentCap) {
         return { title: 'Rokad', description: '' };
     }
     return {
-        title: currentCap.title,
+        title: currentCap.name,
         description: currentCap.subtitle,
     }
 }
 
 
-export default async function PressPage(props: Props): Promise<ReactNode> {
+export default async function LegalPage(props: Props): Promise<ReactNode> {
     const params = await props.params;
     const { slug } = params;
     const client = getServerApollo();
@@ -79,12 +76,13 @@ export default async function PressPage(props: Props): Promise<ReactNode> {
         }
     })
     // @ts-expect-error type err
-    const currentPress = data.mediaCenters[0]
+    const currentLegal = data.legals[0]
 
-    if (!currentPress) {
+    if (!currentLegal) {
         return notFound()
     }
-    const formattedDate = new Date(currentPress.public_on).toLocaleDateString('en-US', {
+
+    const formattedDate = new Date(currentLegal.updatedAt).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'short', // "Nov"
         day: 'numeric'  // "26"
@@ -95,22 +93,19 @@ export default async function PressPage(props: Props): Promise<ReactNode> {
             <div className="max-w-4xl pt-10 rounded mx-auto">
                 <div className="mt-2 mb-4 max-w-3xl mx-auto max-sm:px-5">
                     <span className="border-2 rounded-full font-medium py-1 px-3">
-                        Press
+                        Legal
                     </span>
                     <h2 className="md:text-3xl text-2xl font-semibold mt-4 md:font-bold">
-                        {currentPress.title}
+                        {currentLegal.name}
                     </h2>
                     <p className="text-sm text-neutral-500 mt-2 font-medium">
-                        Published on {formattedDate}
+                        Last updated on {formattedDate}
                     </p>
                 </div>
-                <div className="bg-white p-1 md:p-2 rounded-lg">
-                    <Image src={currentPress.FeaturedImage.url} width={900} height={512} alt={currentPress.title} className="rounded-lg" unoptimized />
-                </div>
             </div>
-            <div className="max-w-3xl max-sm:px-5 mx-auto mt-10 border-b pb-10 prose prose-img:rounded-lg prose-img:border-2 prose-img:border-white prose-img:bg-white prose-img:p-5 prose-neutral">
+            <div className="max-w-3xl max-sm:px-5 mx-auto mt-10 pb-10 prose prose-img:rounded-lg prose-img:border-2 prose-img:border-white prose-img:bg-white prose-img:p-5 prose-neutral">
                 <Markdown>
-                    {currentPress.content}
+                    {currentLegal.Content}
                 </Markdown>
             </div>
         </section>

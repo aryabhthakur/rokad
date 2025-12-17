@@ -97,7 +97,7 @@ function Platform() {
                             </div>
                         </div>
                     </div>
-                    <div className="grid nd:grid-cols-3 border-t border-dashed border-neutral-300 divide-x divide-dashed divide-neutral-300 *:h-56 *:flex *:flex-col font-medium *:p-5">
+                    <div className="grid md:grid-cols-3 border-t border-dashed border-neutral-300 divide-x divide-dashed divide-neutral-300 *:h-56 *:flex *:flex-col font-medium *:p-5">
                         <div>
                             <div className="size-10 flex rounded-xl bg-neutral-200 text-neutral-600">
                                 <Icon icon={"solar:bolt-circle-bold-duotone"} className="size-6 m-auto" />

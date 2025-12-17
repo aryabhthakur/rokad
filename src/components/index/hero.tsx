@@ -100,7 +100,7 @@ const Hero: FunctionComponent<HeroProps> = ({ className, HeroTitle, HeroDesc, He
     return (<>
         <section className={cn("relative flex", className)}>
             <div className="border-y max-sm:hidden border-dashed h-[640px] w-full top-40 left-0 absolute border-neutral-300" />
-            <div className="max-w-6xl bg-accent w-full mx-auto border-dashed border-x border-neutral-300 relative pt-40">
+            <div className="max-w-6xl bg-accent w-full mx-auto border-dashed border-x border-neutral-300 relative pt-28 md:pt-40">
                 <div className="h-[640px] border-y border-dashed border-neutral-300 p-1 relative">
                     <div className="bg-white rounded h-full text-center relative z-10 p-5">
                         <div className="absolute w-full z-0 h-full left-0 top-0">

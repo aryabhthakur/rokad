@@ -75,7 +75,7 @@ const Insights: FunctionComponent<InsightsProps> = ({ className, insights }) => 
                                 </Link>
                             </Button>
                             <Button asChild className="pl-5! bg-orange-600 hover:bg-orange-500 md:w-fit w-full">
-                                <Link href={"/subscribe"}>
+                                <Link href={"https://tally.so/r/VLjpKy"}>
                                     Newsletters <ArrowUpRight />
                                 </Link>
                             </Button>

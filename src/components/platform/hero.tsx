@@ -1,34 +1,12 @@
 'use client'
 
 import { FunctionComponent, useState } from "react";
-import { ArrowUpRight, ChevronDown, ChevronRight, Info, MousePointerClick, X } from "lucide-react";
-import { ChartConfig, ChartContainer } from "@/components/ui/chart"
-import { Bar, BarChart } from "recharts"
-import { Separator } from "../ui/separator";
+import { ArrowUpRight, ChevronDown, MousePointerClick, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { FlickeringGrid } from "../ui/flickering-grid";
 import Image from "next/image";
-
-const chartData = [
-    { month: "January", desktop: 186, mobile: 80 },
-    { month: "February", desktop: 305, mobile: 200 },
-    { month: "March", desktop: 237, mobile: 120 },
-    { month: "April", desktop: 73, mobile: 190 },
-    { month: "May", desktop: 209, mobile: 130 },
-    { month: "June", desktop: 214, mobile: 140 },
-]
-const chartConfig = {
-    desktop: {
-        label: "Desktop",
-        color: "#2563eb",
-    },
-    mobile: {
-        label: "Mobile",
-        color: "#60a5fa",
-    },
-} satisfies ChartConfig
 
 interface HeroProps {
     className?: string

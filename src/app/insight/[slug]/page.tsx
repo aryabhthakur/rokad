@@ -70,7 +70,7 @@ export async function generateMetadata(
     }
 
     return {
-        title: currentCap.name,
+        title: currentCap.Title,
         description: currentCap.subtitle,
     }
 }

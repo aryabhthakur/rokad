@@ -1,13 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { getServerApollo } from "@/lib/apollo-server";
 import { gql } from "@apollo/client";
-import { ChevronRight } from "lucide-react";
+import { ArrowUpRight, ChevronRight } from "lucide-react";
 import { ReactNode } from "react";
 import Markdown from "react-markdown";
 import { notFound } from 'next/navigation';
 import remarkGfm from 'remark-gfm';
 import { Separator } from "@/components/ui/separator";
 import { Metadata, ResolvingMetadata } from "next/types";
+import Link from "next/link";
 
 type Props = {
     params: Promise<{ slug: string }>
@@ -63,7 +64,7 @@ export async function generateMetadata(
     }
 
     return {
-        title: currentCap.name,
+        title: currentCap.title,
         description: currentCap.subtitle,
     }
 }
@@ -131,8 +132,10 @@ export default async function CSPage(props: Props): Promise<ReactNode> {
                         <h5 className="mt-1 text-neutral-500">
                             Only what&apos;s relevant
                         </h5>
-                        <Button className="mt-8 !pl-5 bg-orange-600 hover:bg-orange-700">
-                            Subscribe now <ChevronRight />
+                        <Button className="mt-8 pl-5! bg-orange-600 hover:bg-orange-700">
+                            <Link href={"https://tally.so/r/VLjpKy"}>
+                                Subscribe now <ArrowUpRight />
+                            </Link>
                         </Button>
                     </div>
                     <p className="mt-2">Subscribe to our newsletter and get weekly industry insights and more,  directly delivered to your inbox.</p>
