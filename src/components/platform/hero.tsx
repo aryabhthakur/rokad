@@ -87,7 +87,7 @@ const Hero: FunctionComponent<HeroProps> = ({ className }) => {
                                         Orders
                                     </h2>
                                     <div className="space-y-2">
-                                        {["/amazon.svg", "/flipkart.png", "/shopify.png", "/woocommerce.png"].map((item) => <div key={item} className="flex gap-2 h-12 rounded-2xl border px-5 items-center">
+                                        {["/amazon.png", "/flipkart.png", "/shopify.png", "/woocommerce.png"].map((item) => <div key={item} className="flex gap-2 h-12 rounded-2xl border px-5 items-center">
                                             <div className="h-4 w-12 md:w-24 bg-neutral-200 rounded-full" />
                                             <div className="h-4 w-12 md:w-24 bg-neutral-200 rounded-full" />
                                             <div className="h-4 w-12 md:w-24 bg-neutral-200 rounded-full" />

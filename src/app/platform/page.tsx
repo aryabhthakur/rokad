@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 
 function Platform() {
-    const integrations = ["/bse.png", "/nse.png", "/zoho.svg", "/Amazon.svg", "/flipkart.png", "/delhivery.png", "/razorpay.png", "/blue-dart.png"]
+    const integrations = ["/bse.png", "/nse.png", "/zoho.svg", "/amazon.png", "/flipkart.png", "/delhivery.png", "/razorpay.png", "/blue-dart.png"]
     return (<>
         <Hero />
         <section id="modules">
