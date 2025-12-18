@@ -3,6 +3,7 @@ import { getServerApollo } from "@/lib/apollo-server";
 import { cn } from "@/lib/utils";
 import { gql } from "@apollo/client";
 import { Rss } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
 
 const QUERY = gql`query MediaCenters($filters: MediaCenterFiltersInput) {
@@ -16,6 +17,10 @@ const QUERY = gql`query MediaCenters($filters: MediaCenterFiltersInput) {
     }
   }
 }`
+export const metadata: Metadata = {
+    title: 'The Media Center',
+    description: "Get updates about what's new with Rokad, what directions are moving and more.",
+}
 
 async function MediaCenter() {
     const client = getServerApollo();

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { getServerApollo } from "@/lib/apollo-server";
 import { gql } from "@apollo/client";
-import { ArrowUpRight, ChevronRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { ReactNode } from "react";
 import Markdown from "react-markdown";
 import { notFound } from 'next/navigation';

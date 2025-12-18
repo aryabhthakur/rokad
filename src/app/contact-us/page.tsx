@@ -1,6 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, MapPin } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+    title: 'Contact us',
+    description: "Tell us your business goal, and we'll work with you to make that possibility, a reality. Let's talk.",
+}
 
 function Contact() {
     return (<>

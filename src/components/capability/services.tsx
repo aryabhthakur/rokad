@@ -1,6 +1,4 @@
 import { cn } from "@/lib/utils";
-import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 import { FunctionComponent } from "react";
 
 interface CapabilityServiceProps {
@@ -15,7 +13,7 @@ interface CapabilityServiceProps {
     }[]
 }
 
-const CapabilityService: FunctionComponent<CapabilityServiceProps> = ({ className, serviceSectionDesc, serviceSectionSubTitle, serviceSectionTitle, services, slug }) => {
+const CapabilityService: FunctionComponent<CapabilityServiceProps> = ({ className, serviceSectionDesc, serviceSectionSubTitle, serviceSectionTitle, services }) => {
     return (<section className={cn(className, "md:px-10 mb-40")}>
         <div className="from-orange-400 bg-linear-to-bl to-orange-600 text-white py-40 md:rounded-4xl">
             <div className="max-w-5xl mx-auto mb-10 max-sm:px-5">
@@ -40,14 +38,14 @@ const CapabilityService: FunctionComponent<CapabilityServiceProps> = ({ classNam
                 </div>
                 {services?.map((service: {
                     name: string, slug: string
-                }) => <Link href={slug + "/" + service.slug} key={service.slug} className="font-medium hover:text-orange-900 py-2 md:py-4 w-full group flex text-lg md:text-3xl items-center">
+                }) => <div key={service.slug} className="font-medium py-2 md:py-4 w-full group flex text-lg md:text-3xl items-center">
                         <span className="flex-1">
                             {service.name}
                         </span>
-                        <span className="size-12 flex rounded-full">
+                        {/* <span className="size-12 flex rounded-full">
                             <ArrowUpRight strokeWidth={1} className="m-auto size-5 md:size-9 delay-75 duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                        </span>
-                    </Link>)}
+                        </span> */}
+                    </div>)}
             </div>
         </div>
     </section>);

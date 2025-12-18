@@ -10,9 +10,16 @@ import {
     EmptyMedia,
     EmptyTitle,
 } from "@/components/ui/empty"
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'Careers',
+    description: "Join the Rokad's Team, Build What Moves Businesses Forward.",
+}
+
 
 function Careers() {
-    const benifits = ["Health Insurance", "Overtime Allowance", "Data & Communication Reimbursements", "Travel Reimbursements", "Meal Allowance", ""]
+    const benifits = ["Health Insurance", "Overtime Allowance", "Data & Communication Reimbursements", "Travel Reimbursements", "Food & Rewards card", "Yearly Learning Allowance"]
     const jobs = []
     return (<>
         <section className="pt-50 md:pt-60 pb-40">
@@ -34,6 +41,17 @@ function Careers() {
                         <p className="opacity-75 max-w-lg">
                             Rokad is where strategy, technology, and execution come together. You&apos;ll work on challenging problems, learn continuously, and contribute to solutions used by real businesses every day.
                         </p>
+                        <p className="opacity-75 mt-5">
+                            Benefits of Working at Rokad
+                        </p>
+                        <div className="flex mt-2 flex-wrap gap-2">
+                            {benifits.map((v) => <Button size={"sm"} key={v} variant={"outline"}>
+                                {v}
+                            </Button>)}
+                            <Button size={"sm"} variant={"ghost"} disabled>
+                                and more...
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>

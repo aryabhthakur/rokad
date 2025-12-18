@@ -2,6 +2,7 @@ import { getServerApollo } from "@/lib/apollo-server";
 import { cn } from "@/lib/utils";
 import { gql } from "@apollo/client";
 import { ArrowUpRight, Dot } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,6 +17,11 @@ const QUERY = gql`query Insights {
     }
   }
 }`
+
+export const metadata: Metadata = {
+    title: 'Insights',
+    description: "Rodak's insights on Global trade, Indian market, Modern business and more.",
+}
 
 async function insights() {
     const client = getServerApollo();

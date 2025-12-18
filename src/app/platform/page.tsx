@@ -2,8 +2,14 @@ import Hero from "@/components/platform/hero";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@iconify/react";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+    title: 'Business OS',
+    description: "AI platform by Rokad, coming soon.",
+}
 
 
 function Platform() {

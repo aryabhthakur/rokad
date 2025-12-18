@@ -7,7 +7,6 @@ import Platform from "@/components/index/platform";
 import Solutions from "@/components/index/solutions";
 import { getServerApollo } from "@/lib/apollo-server";
 import { gql } from "@apollo/client";
-import Image from "next/image";
 import Link from "next/link";
 
 const QUERY = gql`

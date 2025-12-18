@@ -4,6 +4,7 @@ import { FunctionComponent } from "react";
 import Markdown from "react-markdown";
 import { Button } from "../ui/button";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 interface IndustryValuesProps {
     className?: string
@@ -53,8 +54,10 @@ const IndustryValues: FunctionComponent<IndustryValuesProps> = ({ className, val
                     <p className="max-sm:text-sm">
                         {valueSectionFooterNote} Talk to an expert to know more about it, schedule a session with us and let&apos;s figure-out how we can help you.
                     </p>
-                    <Button className="mt-4 !pl-4">
-                        Schedule now <ArrowUpRight />
+                    <Button className="mt-4 !pl-4" asChild>
+                        <Link href={"https://tally.so/r/BzaO14"} target="_blank">
+                            Schedule now <ArrowUpRight />
+                        </Link>
                     </Button>
                 </div>
             </div>

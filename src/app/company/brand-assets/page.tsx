@@ -1,7 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+    title: 'Brand Assets',
+    description: "Rokad's Brand assets, such as logos, fonts, colors & more.",
+}
 
 function BrandAsset() {
     return (<>

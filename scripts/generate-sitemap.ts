@@ -49,6 +49,9 @@ const SEARCHABLES_QUERY = gql`
     mediaCenters {
       slug
     }
+    legals {
+      slug
+    }
   }
 `;
 
@@ -66,6 +69,7 @@ type QueryResult = {
   insights: { slug: string }[];
   caseStudies: { slug: string }[];
   mediaCenters: { slug: string }[];
+  legals: { slug: string }[];
 };
 
 type SitemapUrl = {
@@ -85,6 +89,7 @@ const PREFIX_MAP: Record<keyof QueryResult, string> = {
   insights: "/insight",
   caseStudies: "/case-study",
   mediaCenters: "/press",
+  legals: "/legal",
 };
 
 /* =========================================================
@@ -99,15 +104,45 @@ const MANUAL_ROUTES: SitemapUrl[] = [
     priority: "1.0",
   },
   {
-    loc: `${BASE_URL}/about`,
+    loc: `${BASE_URL}/company`,
     lastmod: new Date().toISOString(),
     changefreq: "yearly",
     priority: "0.6",
   },
   {
-    loc: `${BASE_URL}/contact`,
+    loc: `${BASE_URL}/company/brand-assets`,
+    lastmod: new Date().toISOString(),
+    changefreq: "monthly",
+    priority: "0.6",
+  },
+  {
+    loc: `${BASE_URL}/company/careers`,
+    lastmod: new Date().toISOString(),
+    changefreq: "monthly",
+    priority: "0.6",
+  },
+  {
+    loc: `${BASE_URL}/company/media-center`,
+    lastmod: new Date().toISOString(),
+    changefreq: "weekly",
+    priority: "0.6",
+  },
+  {
+    loc: `${BASE_URL}/contact-us`,
     lastmod: new Date().toISOString(),
     changefreq: "yearly",
+    priority: "0.6",
+  },
+  {
+    loc: `${BASE_URL}/platform`,
+    lastmod: new Date().toISOString(),
+    changefreq: "monthly",
+    priority: "0.6",
+  },
+  {
+    loc: `${BASE_URL}/insights`,
+    lastmod: new Date().toISOString(),
+    changefreq: "weekly",
     priority: "0.6",
   },
 ];
@@ -147,6 +182,7 @@ async function generateSitemap() {
     ...buildUrls(data!.insights, PREFIX_MAP.insights, "0.7"),
     ...buildUrls(data!.caseStudies, PREFIX_MAP.caseStudies, "0.7"),
     ...buildUrls(data!.mediaCenters, PREFIX_MAP.mediaCenters, "0.6"),
+    ...buildUrls(data!.legals, PREFIX_MAP.legals, "0.5"),
   ];
 
   const allUrls = [...MANUAL_ROUTES, ...dynamicUrls];
