@@ -68,13 +68,13 @@ const Insights: FunctionComponent<InsightsProps> = ({ className, insights }) => 
                                 Industry Insights, Global & National Data Reports, Rokad Updates and more, get it delivered to your email or check out our Insight Page feed.
                             </p>
                         </div>
-                        <div className="flex max-sm:flex-col max-sm:w-full mt-5 gap-2 md:gap-4">
-                            <Button asChild className="pl-5! md:w-fit w-full">
+                        <div className="flex max-sm:flex-col md:ml-auto items-start md:items-center  mt-5 gap-2 md:gap-4">
+                            <Button asChild className="pl-5!">
                                 <Link href={"/insights"}>
                                     Insights <ArrowUpRight />
                                 </Link>
                             </Button>
-                            <Button asChild className="pl-5! bg-orange-600 hover:bg-orange-500 md:w-fit w-full">
+                            <Button asChild className="pl-5! bg-orange-600 hover:bg-orange-500">
                                 <Link href={"https://tally.so/r/VLjpKy"}>
                                     Newsletters <ArrowUpRight />
                                 </Link>

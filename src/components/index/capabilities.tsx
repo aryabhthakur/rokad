@@ -63,8 +63,10 @@ const Capabilities: FunctionComponent<CapabilitiesProps> = ({ className, capabil
                         <p className="text-sm">
                             Let&apos;s connect, we would love to tailor our solutions to your business needs.
                         </p>
-                        <Button className="bg-rose-950 hover:bg-white/20 w-fit pl-5! mt-8 mx-auto hover:text-white">
-                            Let&apos;s connect <ChevronRight />
+                        <Button asChild className="bg-rose-950 hover:bg-white/20 w-fit pl-5! mt-8 mx-auto hover:text-white">
+                            <Link href={"/contact-us"}>
+                                Let&apos;s connect <ChevronRight />
+                            </Link>
                         </Button>
                     </div>
                 </div>

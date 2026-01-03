@@ -110,7 +110,15 @@ const Footer: FunctionComponent<FooterProps> = async ({ className, ctaMsg = "Let
                             </div>
                         </div>)}
                     </div>
-                    <div className="mt-40 w-full py-3 text-xs text-neutral-500 flex items-center">
+                    <div className="grid h-40 mt-5 md:grid-cols-6 *:flex *:items-center">
+                        <Link href={"https://www.designrush.com/"}>
+                            <Image width={128} height={128} alt="Designrush" src={"/Designrush-Top-AI-Company.png"} />
+                        </Link>
+                        <Link href={"https://www.goodfirms.co/company/rokad"}>
+                            <Image width={128} height={128} alt="Goodfirms" src={"/goodfirm-badge.svg"} unoptimized />
+                        </Link>
+                    </div>
+                    <div className="mt-5 w-full py-3 text-xs text-neutral-500 flex items-center">
                         *Disclaimer: Images on this site are used under Creative Commons or paid licenses. All third-party logos and trademarks belong to their respective owners and are shown for representation purposes only. Rokad logos and trademarks are fully owned by Rokad and may not be reused without permission.
                     </div>
                     <div className="w-full py-3 text-sm text-neutral-500 flex items-center flex-wrap border-t">

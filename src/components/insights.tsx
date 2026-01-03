@@ -45,7 +45,7 @@ const Insights: FunctionComponent<InsightsProps> = ({ className, insights }) => 
                     </span>
                 </div>
                 <div className="divide-y">
-                    {insights?.map((insight) => <div key={insight.slug} className="flex py-2">
+                    {insights?.map((insight) => <div key={insight.slug} className="flex gap-2 py-2">
                         <Image width={128} height={320} alt={insight.Title} className="rounded max-sm:hidden" src={insight.FeaturedImage.url} />
                         <Link href={"/insight/" + insight.slug} className="font-medium w-full hover:text-orange-600 group flex text-lg md:text-2xl">
                             <span className="flex-1">
