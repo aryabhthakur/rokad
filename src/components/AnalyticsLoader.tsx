@@ -5,7 +5,7 @@ import { getCookie } from "@/lib/cookies";
 import type { CookieConsent } from "@/types/consent";
 
 const COOKIE_NAME = "rokad_cookie_consent";
-const GA_ID = "G-QHZHT1VL0E";
+const GA_ID = process.env.GA_MEASUREMENT_ID || "G-QHZHT1VL0E";
 const GA_SCRIPT_ID = "ga-script";
 
 /**
@@ -39,13 +39,12 @@ function parseConsent(value: string | undefined): CookieConsent | null {
  * Loads Google Analytics safely
  */
 function loadGoogleAnalytics(): void {
-    if (document.getElementById(GA_SCRIPT_ID)) return;
+    if (document.getElementById("ga-script")) return;
 
-    const script: HTMLScriptElement = document.createElement("script");
-    script.id = GA_SCRIPT_ID;
+    const script = document.createElement("script");
+    script.id = "ga-script";
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-
     document.head.appendChild(script);
 
     window.dataLayer = window.dataLayer ?? [];
@@ -55,12 +54,20 @@ function loadGoogleAnalytics(): void {
     };
 
     window.gtag("js", new Date());
+
     window.gtag("config", GA_ID, {
         anonymize_ip: true,
         allow_google_signals: false,
         allow_ad_personalization_signals: false,
+        send_page_view: false // IMPORTANT
+    });
+
+    // Manually fire first pageview
+    window.gtag("event", "page_view", {
+        page_path: window.location.pathname
     });
 }
+
 
 export default function AnalyticsLoader(): null {
     useEffect(() => {

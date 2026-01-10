@@ -10,6 +10,9 @@ import { gql } from "@apollo/client";
 import CookieBanner from "@/components/CookieBanner";
 import AnalyticsLoader from "@/components/AnalyticsLoader";
 import Head from "next/head";
+import UTMTracker from "@/components/UTMTracker";
+import GATracker from "@/components/GATracker";
+import EngagementTracker from "@/components/EngagementTracker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -313,6 +316,9 @@ export default async function RootLayout({
           <HeaderServerWithFetch />
           {/* <Header /> */}
           <AnalyticsLoader />
+          <UTMTracker />
+          <GATracker />
+          <EngagementTracker />
           <CookieBanner />
           <main className="bg-neutral-100">
             {children}
