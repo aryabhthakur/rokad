@@ -5,10 +5,10 @@ import { useEffect } from "react";
 
 export default function GATracker() {
     const pathname = usePathname();
-    const utm = sessionStorage.getItem("rokad_utm");
 
     useEffect(() => {
         if (!window.gtag) return;
+        const utm = sessionStorage.getItem("rokad_utm");
 
         window.gtag("event", "page_view", {
             page_path: pathname,
