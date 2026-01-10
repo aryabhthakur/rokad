@@ -8,7 +8,6 @@ import { CommandPalette } from "@/components/CommandPalette";
 import { getServerApollo } from "@/lib/apollo-server";
 import { gql } from "@apollo/client";
 import CookieBanner from "@/components/CookieBanner";
-import AnalyticsLoader from "@/components/AnalyticsLoader";
 import { GoogleAnalytics } from '@next/third-parties/google'
 import UTMTracker from "@/components/UTMTracker";
 import GATracker from "@/components/GATracker";
