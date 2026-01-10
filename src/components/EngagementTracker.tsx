@@ -16,7 +16,7 @@ export default function EngagementTracker() {
             if (percent > maxScroll && percent % 25 === 0) {
                 maxScroll = percent;
                 window.gtag?.("event", "scroll_depth", {
-                    percent
+                    percent,
                 });
             }
         }

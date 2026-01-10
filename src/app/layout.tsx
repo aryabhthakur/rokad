@@ -9,10 +9,11 @@ import { getServerApollo } from "@/lib/apollo-server";
 import { gql } from "@apollo/client";
 import CookieBanner from "@/components/CookieBanner";
 import AnalyticsLoader from "@/components/AnalyticsLoader";
-import Head from "next/head";
+import { GoogleAnalytics } from '@next/third-parties/google'
 import UTMTracker from "@/components/UTMTracker";
 import GATracker from "@/components/GATracker";
 import EngagementTracker from "@/components/EngagementTracker";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -308,14 +309,24 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalFaqSchema) }}
         />
+        <Script id="ga-consent-default" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+
+            gtag('consent', 'default', {
+              analytics_storage: 'denied',
+              ad_storage: 'denied',
+              wait_for_update: 500
+            });
+          `}
+        </Script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-neutral-100`}
       >
         <Providers>
           <HeaderServerWithFetch />
-          {/* <Header /> */}
-          <AnalyticsLoader />
           <UTMTracker />
           <GATracker />
           <EngagementTracker />
@@ -327,6 +338,7 @@ export default async function RootLayout({
           <Footer />
         </Providers>
       </body>
+      <GoogleAnalytics gaId="G-QHZHT1VL0E" />
     </html>
   );
 }

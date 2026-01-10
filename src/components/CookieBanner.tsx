@@ -8,6 +8,7 @@ import Link from "next/link";
 
 const COOKIE_NAME = "rokad_cookie_consent";
 
+
 export default function CookieBanner() {
     const [visible, setVisible] = useState(false);
 
@@ -17,12 +18,20 @@ export default function CookieBanner() {
     }, []);
 
     function acceptCookies() {
+        if (!window.gtag) return;
         setCookie(
             COOKIE_NAME,
             JSON.stringify({ analytics: true, timestamp: Date.now() }),
             180
         );
-        window.dispatchEvent(new Event("analytics-consent-granted"));
+        window.gtag("consent", "update", {
+            analytics_storage: "granted",
+            ad_storage: "denied"
+        });
+        // Send first pageview now that consent is granted
+        window.gtag("event", "page_view", {
+            page_path: window.location.pathname
+        });
         setVisible(false);
     }
 
